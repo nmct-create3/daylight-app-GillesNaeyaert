@@ -15,8 +15,11 @@
 
 :root {
     /* colors */
-    --global-color-day-front:#0F3557;
-    --global-color-day-back:#CCE7FF;
+    --global-color-light: #cce7ff;
+	--global-color-dark: #0f3557;
+	--global-color-front: var(--global-color-dark);
+	--global-color-back: var(--global-color-light);
+
     /* opacity */
     --global-color-opacity:0.60;
 
@@ -34,8 +37,8 @@
 */
 
 html {
-    background-color: var(--global-color-day-back);
-    color:var(--global-color-day-front);
+    background: var(--global-color-back);
+    color:var(--global-color-front);
     font-feature-settings: "zero" 1;
     
     font-size: 16px;
@@ -279,7 +282,7 @@ align-items: center;
 .c-sun {
 width:22px;
 height:22px;
-fill:var(--global-color-day-front);
+fill:var(--global-color-front);
 
 }
 
@@ -297,18 +300,28 @@ fill:var(--global-color-day-front);
     margin-right:auto;
     padding:32px;
     width:464px;
+    height:100vh;
+    display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+    
 }
 .c-app__summary {
     font-size: 28px;
     line-height: 40px;
 }
+
+
+
+
+
 /*
     Component: Horizon
     ---
     Horizon with sun visualisation
 */
 .c-horizon__line {
-    border-top:1px solid var(--global-color-day-front);
+    border-top:1px solid var(--global-color-front);
     padding-top: 7px;
     margin-bottom: 34px;
     display: flex;
@@ -323,6 +336,8 @@ fill:var(--global-color-day-front);
     position: relative;
     height: 200px;
     overflow: hidden;
+    padding-top:22px;
+    padding-right: 40px;
 }
 
 .c-horizon__sky {
@@ -337,6 +352,7 @@ fill:var(--global-color-day-front);
     justify-content: center;
     align-items: center;
     width: 40px;
+    transform: translateY(22px);
 } 
 
 .c-horizon__sun::before {
@@ -366,7 +382,10 @@ fill:var(--global-color-day-front);
 /*
     Change the theme using CSS vars.
 */
-
+.is-night {
+	--global-color-front: var(--global-color-light);
+	--global-color-back: var(--global-color-dark);
+}
 /* Night version: just switch the light and dark vars */
 
 /*------------------------------------*\
